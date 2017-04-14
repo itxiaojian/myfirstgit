@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zssi.framework.app.sys.mapper.SysMapper">
+	<select id="listAllRoleResources" resultType="pureMap">
+		select
+			a.jsbh as role_id,
+			jsmc as role_name,
+			cdbh as resource_id 	
+		from 
+			sys_jscd a inner join sys_js b on a.jsbh=b.jsbh
+	</select>
+	
+	<select id="listAllRoleResources1_count" parameterType="filter" resultType="int">
+		SELECT 
+			count(1)
+		from
+            sys_js this_
+        where 1=1
+<!-- 		LEFT JOIN -->
+<!--              sys_yhjs b where this_.JSBH = b.JSBH -->
+<!-- 		where 1=1 -->
+		<if test="Q_jsmc_S_LK != null and Q_jsmc_S_LK != ''">
+			and	this_.jsmc!=#{Q_jsmc_S_LK}			
+		</if>
+		<if test="Q_bz_S_LK != null and Q_bz_S_LK != ''">
+			and	this_.bz like '%'||#{Q_bz_S_LK}||'%'			
+		</if>
+		<if test="Q_jszt_N_EQ != null and Q_jszt_N_EQ != ''">
+			and	this_.jszt like '%'||#{Q_jszt_N_EQ}||'%'			
+		</if>
+	</select>
+	
+	<select id="listAllRoleResources1" parameterType="filter" resultType="pureMap">
+       SELECT * FROM (SELECT C.*,ROWNUM RN 
+             FROM (SELECT 
+                   A.JSBH AS jsbh ,
+                   A.JSMC AS jsmc,
+                   A.BZ AS bz,
+                   A.JSZT AS jszt,(
+                   SELECT COUNT(1) 
+                   FROM SYS_YHJS B
+                   WHERE B.JSBH = A.JSBH 
+                   GROUP BY B.JSBH)
+                   AS bjsxyhs
+                   FROM SYS_JS A 
+                   WHERE 1 = 1 
+        <if test="Q_jsmc_S_LK != null and Q_jsmc_S_LK != ''">
+			and	A.jsmc =#{Q_jsmc_S_LK}			
+		</if>
+		<if test="Q_bz_S_LK != null and Q_bz_S_LK != ''">
+			and	A.bz like '%'||#{Q_bz_S_LK}||'%'			
+		</if>
+		<if test="Q_jszt_N_EQ != null and Q_jszt_N_EQ != ''">
+			and	A.jszt like '%'||#{Q_jszt_N_EQ}||'%'			
+		</if>
+             <![CDATA[)C WHERE ROWNUM <= #{Q_limit_N_EQ} ) WHERE RN > #{Q_start_N_EQ}]]>
+	</select>
+	
+	<select id="listAllUser_count" parameterType="filter" resultType="int">
+		SELECT 
+			count(1)
+		FROM(SELECT D.YHBH,D.USERNAME,D.SJH,D.YX,D.YHZT,D.BMMC,D.XM,
+		                WMSYS.WM_CONCAT(D.YHJS) YHJS 
+			FROM (select
+	        this_.yhbh as yhbh,
+	        this_.bmbh as bmbh,
+	        this_.gwbh as gwbh,
+	        this_.mm as mm,
+	        this_.sjh as sjh,
+	        this_.dlm as username,
+	        this_.xm as xm,
+	        this_.yhzt as yhzt,
+	        this_.yx as yx,
+	        this_.zhdlsj as zhdlsj,
+	        bm.BMMC as bmmc,
+	        js.BZ as yhjs,
+		    gw.BMMC as gwmc
+    	from
+        	sys_yh this_ 
+		LEFT JOIN
+			sys_zzjg bm on this_.BMBH=bm.BMBH
+		LEFT JOIN
+			sys_zzjg gw on this_.GWBH=gw.BMBH
+		LEFT JOIN
+			sys_yhjs yhjs on this_.yhbh=yhjs.YHBH	
+	    LEFT JOIN
+			sys_js js on yhjs.jsbh=js.JSBH
+		where this_.dlm != 'admin' and this_.khfl is null
+		<if test="Q_yhbh_S_NEQ != null and Q_yhbh_S_NEQ != ''">
+			and	this_.yhbh!=#{Q_yhbh_S_NEQ}			
+		</if>
+		<if test="Q_xm_S_LK != null and Q_xm_S_LK != ''">
+			and	this_.xm like '%'||#{Q_xm_S_LK}||'%'			
+		</if>
+		<if test="Q_username_S_LK != null and Q_username_S_LK != ''">
+			and	this_.dlm like '%'||#{Q_username_S_LK}||'%'			
+		</if>
+		<if test="Q_bmmc_S_LK != null and Q_bmmc_S_LK != ''">
+			and	this_.bmmc like '%'||#{Q_bmmc_S_LK}||'%'			
+		</if>
+		<if test="Q_yhzt_N_EQ != null and Q_yhzt_N_EQ != ''">
+			and	this_.yhzt=#{Q_yhzt_N_EQ}			
+		</if>
+		<![CDATA[) D GROUP BY D.YHBH,D.USERNAME,D.SJH,D.YX,D.XM,D.YHZT,D.BMMC)]]>
+	</select>
+	<select id="listAllUser" parameterType="filter" resultType="pureMap">
+		SELECT * FROM ( SELECT A.*,ROWNUM as RN
+		FROM(SELECT D.YHBH,D.USERNAME,D.SJH,D.YX,D.YHZT,D.BMMC,D.XM,
+		                WMSYS.WM_CONCAT(D.YHJS) YHJS 
+			FROM (select
+	        this_.yhbh as yhbh,
+	        this_.bmbh as bmbh,
+	        this_.gwbh as gwbh,
+	        this_.mm as mm,
+	        this_.sjh as sjh,
+	        this_.dlm as username,
+	        this_.xm as xm,
+	        this_.yhzt as yhzt,
+	        this_.yx as yx,
+	        this_.zhdlsj as zhdlsj,
+	        bm.BMMC as bmmc,
+	        js.BZ as yhjs,
+		    gw.BMMC as gwmc
+    	from
+        	sys_yh this_ 
+		LEFT JOIN
+			sys_zzjg bm on this_.BMBH=bm.BMBH
+		LEFT JOIN
+			sys_zzjg gw on this_.GWBH=gw.BMBH
+		LEFT JOIN
+			sys_yhjs yhjs on this_.yhbh=yhjs.YHBH	
+	    LEFT JOIN
+			sys_js js on yhjs.jsbh=js.JSBH
+		where this_.dlm != 'admin' and this_.khfl is null
+		<if test="Q_yhbh_S_NEQ != null and Q_yhbh_S_NEQ != ''">
+			and	this_.yhbh!=#{Q_yhbh_S_NEQ}			
+		</if>
+		<if test="Q_xm_S_LK != null and Q_xm_S_LK != ''">
+			and	this_.xm like '%'||#{Q_xm_S_LK}||'%'			
+		</if>
+		<if test="Q_username_S_LK != null and Q_username_S_LK != ''">
+			and	this_.dlm like '%'||#{Q_username_S_LK}||'%'			
+		</if>
+		<if test="Q_bmmc_S_LK != null and Q_bmmc_S_LK != ''">
+			and	this_.bmmc like '%'||#{Q_bmmc_S_LK}||'%'			
+		</if>
+		<if test="Q_yhzt_N_EQ != null and Q_yhzt_N_EQ != ''">
+			and	this_.yhzt=#{Q_yhzt_N_EQ}			
+		</if>
+			<![CDATA[) D GROUP BY D.YHBH,D.USERNAME,D.SJH,D.YX,D.XM,D.YHZT,D.BMMC) A 
+			WHERE ROWNUM <= #{Q_limit_N_EQ} ) WHERE RN > #{Q_start_N_EQ}]]>
+<!-- 			<![CDATA[) A WHERE ROWNUM <= #{limit} ) WHERE RN > #{start}]]> -->
+	</select>
+	
+	<select id="listUser" parameterType="filter" resultType="pureMap">
+	       SELECT A.*
+          FROM ( SELECT D.YHBH,D.USERNAME,D.SJH,D.YX,D.YHZT,D.BMMC,D.XM,
+		                WMSYS.WM_CONCAT(D.YHJS) YHJS 
+			FROM (select
+	        this_.yhbh as yhbh,
+	        this_.bmbh as bmbh,
+	        this_.gwbh as gwbh,
+	        this_.mm as mm,
+	        this_.sjh as sjh,
+	        this_.dlm as username,
+	        this_.xm as xm,
+	        this_.yhzt as yhzt,
+	        this_.yx as yx,
+	        this_.zhdlsj as zhdlsj,
+	        bm.BMMC as bmmc,
+	        js.BZ as yhjs,
+		    gw.BMMC as gwmc
+    	from
+        	sys_yh this_ 
+		LEFT JOIN
+			sys_zzjg bm on this_.BMBH=bm.BMBH
+		LEFT JOIN
+			sys_zzjg gw on this_.GWBH=gw.BMBH
+		LEFT JOIN
+			sys_yhjs yhjs on this_.yhbh=yhjs.YHBH	
+	    LEFT JOIN
+			sys_js js on yhjs.jsbh=js.JSBH
+		where this_.dlm != 'admin' and this_.khfl is null) D
+		GROUP BY D.YHBH,D.USERNAME,D.SJH,D.YX,D.XM,D.YHZT,D.BMMC)A
+		WHERE 1 = 1
+		<if test="Q_yhbh_S_EQ != null and Q_yhbh_S_EQ != ''">
+			and	A.yhbh=#{Q_yhbh_S_EQ}			
+		</if>
+	</select>
+	
+	<select id="listJsUser_count" parameterType="filter" resultType="int">
+		SELECT COUNT(1)
+		FROM(SELECT C.YHBH,C.USERNAME,C.SJH,C.YX,C.YHZT,C.BMMC,C.XM,C.JSBH
+			FROM (select
+	        this_.yhbh as yhbh,
+	        this_.bmbh as bmbh,
+	        this_.gwbh as gwbh,
+	        this_.mm as mm,
+	        this_.sjh as sjh,
+	        this_.dlm as username,
+	        this_.xm as xm,
+	        this_.yhzt as yhzt,
+	        this_.yx as yx,
+	        this_.zhdlsj as zhdlsj,
+	        bm.BMMC as bmmc,
+	        yhjs.jsbh,
+		    gw.BMMC as gwmc
+    	from
+        	sys_yh this_ 
+		LEFT JOIN
+			sys_zzjg bm on this_.BMBH=bm.BMBH
+		LEFT JOIN
+			sys_zzjg gw on this_.GWBH=gw.BMBH
+		LEFT JOIN
+			sys_yhjs yhjs on this_.yhbh=yhjs.YHBH	
+		where this_.dlm != 'admin' and this_.khfl is null) C
+		WHERE 1 = 1
+<!-- 		<if test="Q_jsbh_S_NEQ != null and Q_jsbh_S_NEQ != ''"> -->
+			AND	C.jsbh =#{Q_jsbh_N_EQ})
+	</select>
+	<select id="listJsUser" parameterType="filter" resultType="pureMap">
+		SELECT * FROM ( SELECT A.*,ROWNUM as RN
+		FROM(SELECT C.YHBH,C.USERNAME,C.SJH,C.YX,C.YHZT,C.BMMC,C.XM,C.JSBH
+			FROM (select
+	        this_.yhbh as yhbh,
+	        this_.bmbh as bmbh,
+	        this_.gwbh as gwbh,
+	        this_.mm as mm,
+	        this_.sjh as sjh,
+	        this_.dlm as username,
+	        this_.xm as xm,
+	        this_.yhzt as yhzt,
+	        this_.yx as yx,
+	        this_.zhdlsj as zhdlsj,
+	        bm.BMMC as bmmc,
+	        yhjs.jsbh,
+		    gw.BMMC as gwmc
+    	from
+        	sys_yh this_ 
+		LEFT JOIN
+			sys_zzjg bm on this_.BMBH=bm.BMBH
+		LEFT JOIN
+			sys_zzjg gw on this_.GWBH=gw.BMBH
+		LEFT JOIN
+			sys_yhjs yhjs on this_.yhbh=yhjs.YHBH	
+		where this_.dlm != 'admin' and this_.khfl is null) C
+		WHERE 1 = 1
+<!-- 		<if test="Q_jsbh_S_NEQ != null and Q_jsbh_S_NEQ != ''"> -->
+			AND	C.jsbh =#{Q_jsbh_N_EQ}			
+<!-- 		</if> -->
+			<![CDATA[) A WHERE ROWNUM <= #{Q_limit_N_EQ} ) WHERE RN > #{Q_start_N_EQ}]]>
+<!-- 			<![CDATA[) A WHERE ROWNUM <= #{limit} ) WHERE RN > #{start}]]> -->
+	</select>
+	
+</mapper>

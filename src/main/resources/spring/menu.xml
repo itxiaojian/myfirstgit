@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:sec="http://www.springframework.org/schema/security"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+        <util:list id="resourceList" list-class="java.util.ArrayList" value-type="java.lang.String">
+    	       
+    	        <value>1800000,,样品管理,/sysmanager7,1800000,ROLE_ADMIN,ypgl</value>
+    	        <value>1800600,1800000,样品登记,/ypgl/YYpYpxx/YpdjPage,1800600,ROLE_ADMIN,ypdj</value>
+    	        <value>1800130,1800000,抽样登记,/ypgl/YYpYpxx/CydjPage,1800130,ROLE_ADMIN,ypdj</value>
+    	        <value>1800800,1800000,样品预登记信息,/ypgl/YypWsdjfh/openPage,1800800,ROLE_ADMIN,ypdj</value>
+    	        <value>1800900,1800000,样品查询,/tjgl/bgcx/openypPage.*,1800900,ROLE_ADMIN,bgcx</value>
+<!--     	    <value>1800900,1800000,样品查询,/ypgl/YYpYpxx/YpcxPage.*,1800900,ROLE_ADMIN,ypxx</value> -->
+		 		<value>1800100,1800000,样品信息,/ypgl/YYpYpxx/YpxxPage.*,1800100,ROLE_ADMIN,ypxx</value>
+		 		<value>1800700,1800000,样品修改,/ypgl/YYpYpxx/YpxgPage.*,1800700,ROLE_ADMIN,yply</value>
+		 		<value>1800140,1800000,检验费用修改,/ypgl/YYpYpxx/ypfyUpdate.*,1800140,ROLE_ADMIN,yply</value>
+				<value>1800200,1800000,样品领用,/ypgl/YYpLy/yplyPage.*,1800200,ROLE_ADMIN,yply</value>
+				<value>1800300,1800000,样品归还,/ypgl/YYpGh/ypghPage.*,1800300,ROLE_ADMIN,ypgh</value>
+				<value>1800400,1800000,样品退样,/ypgl/YYpTy/yptyPage.*,1800400,ROLE_ADMIN,ypty</value>
+				<value>1800110,1800000,移交记录,/ypgl/YYpYj/yjjlPage.*,1800110,ROLE_ADMIN,yply</value>
+				<value>1800120,1800000,样品移交,/ypgl/YYpYj/ypyjPage.*,1800120,ROLE_ADMIN,yply</value>
+				<value>1800500,1800000,预检方案,/ypgl/YYpJyfa/YjfaPage.*,1800500,ROLE_ADMIN,yjfa</value>
+				<value>1801000,1800000,驳回样品修改,/cps/processXN/bhypxgProcess.*,1801000,ROLE_ADMIN,yjfa</value>
+				
+				<value>3200000,,报告管理,/sysmanager36,3200000,ROLE_ADMIN,bggl</value>
+				<value>3200100,3200000,报告预警,/tjgl/bgcx/warnPage.*,3200100,ROLE_ADMIN,bgcx</value>
+				<value>3200200,3200000,报告查询,/tjgl/bgcx/openPage.*,3200200,ROLE_ADMIN,bgcx</value>
+				<value>3201400,3200000,报告拖期查询,/tjgl/bgcx/opentqPage.*,3201400,ROLE_ADMIN,bgcx</value>
+				<value>3200300,3200000,报告编制,/cps/process/taskXN/pendWorkPoolIndex?ypcs=1,3200300,ROLE_ADMIN,wdrw</value>
+ 				<value>3200400,3200000,报告审核,/cps/process/taskXN/pendWorkPoolIndex?ypcs=2,3200400,ROLE_ADMIN,wdrw</value>
+ 				<value>3200500,3200000,报告批准,/cps/process/taskXN/pendWorkPoolIndex?ypcs=3,3200500,ROLE_ADMIN,wdrw</value>
+ 				<value>3200600,3200000,报告接收,/cps/process/taskXN/pendWorkPoolIndex?ypcs=4,3200600,ROLE_ADMIN,wdrw</value>
+ 				<value>3200700,3200000,报告归档,/cps/process/taskXN/pendWorkPoolIndex?ypcs=5,3200700,ROLE_ADMIN,wdrw</value>
+				<value>3200800,3200000,报告解锁,/jygl/YjyBgxx/BgjsPage.*,3200800,ROLE_ADMIN,bgjs</value>
+				<value>3200900,3200000,报告延期,/jygl/YjyBgxx/BgyqPage.*,3200900,ROLE_ADMIN,bgyq</value>
+				<value>3201000,3200000,报告打印,/jygl/YjyBgxx/BgdydanPage.*,3201000,ROLE_ADMIN,bgdy</value>
+				<value>3201100,3200000,报告自定义打印,/jygl/YjyBgxx/BgzdydyPage.*,3201100,ROLE_ADMIN,bgdy</value>
+				<value>3201200,3200000,报告多次打印,/jygl/YjyBgxx/BgdyPage.*,3201200,ROLE_ADMIN,bgdy</value>
+				<value>3201300,3200000,报告原始记录,/jygl/YjyYsjl/YsjlPage.*,3201300,ROLE_ADMIN,bgdy</value>
+				<value>3201500,3200000,报告汇总,/jygl/YjyBghz/BghzPage.*,3201500,ROLE_ADMIN,bgcx</value>
+				<value>3201600,3200000,整体报告打印,/jygl/YjyBgxx/QfzPage.*,3201600,ROLE_ADMIN,bgdy</value>
+				
+				<value>2300000,,任务管理,/sysmanager12,2100000,ROLE_ADMIN,rwgl</value>
+				<value>2300100,2300000,任务分配,/cps/process/taskXN/pendWorkPoolIndex?ypcs=0,2300100,ROLE_ADMIN,wdrw</value>
+<!--				<value>2300200,2300000,任务下达,/yrwgl/yrwxd/yrwxdPage.*,2300200,ROLE_ADMIN,rwxd</value>
+				<value>2300300,2300000,任务指派,/yrwgl/yrwzp/yrwzpPage.*,2300300,ROLE_ADMIN,rwzp</value>
+				<value>2300400,2300000,我的任务,/yrwgl/ywdrw/ywdrwPage.*,2300400,ROLE_ADMIN,wdrw</value>-->
+				<value>2300500,2300000,任务撤回,/cps/processXN/rwchProcess.*,2300500,ROLE_ADMIN,rwch</value>
+				
+				<value>100000,,我的工作台,/workdesk,100000,ROLE_ADMIN,wdgzt</value>
+				<value>191100,100000,修改密码,/sys/SysUser/changePwd,900900,NONE,xgmm</value>
+				
+				
+				 <value>3300000,,检验咨询管理,/sysmanager26,3300000,ROLE_ADMIN,bgcx</value>
+				<value>3300100,3300000,检验咨询,/jyzxgl/jyzx/jyzxpage.*,3300100,ROLE_ADMIN,bgcx</value> 
+				
+				
+				<value>900000,,系统管理,/sysmanager,900000,ROLE_ADMIN,xtgl</value>
+				<value>900700,900000,账号管理,/sys/SysUser/list.*,900700,ROLE_ADMIN,zhgl</value>
+				<value>900300,900000,人员管理,/yhgl/SysYh/SysYhPage.*,900300,ROLE_ADMIN,rygl</value>
+				<value>900400,900000,预登记账号管理,/yhgl/SysYh/YdjYhPage.*,900400,ROLE_ADMIN,rygl</value>
+				<value>900600,900000,角色管理,/sys/SysRole/list.*,900600,ROLE_ADMIN,jsgl</value>
+				<value>900500,900000,数据字典,/sys/SysDict/list.*,900500,ROLE_ADMIN,sjzd</value>
+				<value>900100,900000,组织机构,/sys/SysArea/list.*,900500,ROLE_ADMIN,zzjg</value>
+				<value>900800,900000,系统日志,/sys/SysLog/list.*,900800,ROLE_ADMIN,xtrz</value>
+<!-- 				<value>900200,900000,微信绑定用户,/sys/SysWxyh/wxyhPage.*,900200,ROLE_ADMIN,wxbdyh</value> -->
+<!-- 				<value>900900,900000,pageOffice实例,,900900,ROLE_ADMIN,zxword</value> -->
+<!-- 				<value>900910,900900,在线Word,/test/testWordOnLine.*,900910,ROLE_ADMIN,zxword</value> -->
+<!-- 				<value>900920,900900,在线Word转PDF,/test/openWTPPage.*,900920,ROLE_ADMIN,zxwordzpdf</value> -->
+				<value>901100,900000,模板设置,/ydmb/YJyYdmb/YdmbPage.*,901100,ROLE_ADMIN,mbsz</value>
+				<value>901200,900000,特殊字符,/tszf/SysTszf/TszfPage.*,901200,ROLE_ADMIN,mbsz</value>
+				
+				<value>6300000,0,流程管理,/process,1300000,ROLE_ADMIN,lcgl</value>
+				<value>6300100,6300000,流程部署,/cps/processXN/deployProcessPage.*,6300100,ROLE_ADMIN,lcbs</value>
+				<value>6300300,6300000,我的流程,/cps/processXN/myProcess.*,6300300,ROLE_ADMIN,wdlc</value>
+				<value>6300400,6300000,运行中的流程,/cps/processXN/runningProcess.*,6300400,ROLE_ADMIN,yxzdlc</value>
+ 				<value>6300500,6300000,我的任务,/cps/process/taskXN/pendWorkPoolIndex.*,6300500,ROLE_ADMIN,wdrw</value>
+ 				<value>6300600,6300000,已办任务,/cps/processXN/involvedProcess.*,6300600,ROLE_ADMIN,ybrw</value>
+				<value>6300700,6300000,历史流程,/cps/processXN/historyProcess.*,6300700,ROLE_ADMIN,lslc</value>
+ 				
+ 				
+				
+               <!--  <value>1600000,,微信管理,/sysmanager1,1600000,ROLE_ADMIN,system</value>
+				<value>1600100,1600000,微信用户管理,/wxauth/user/wxUser.*,1600100,ROLE_ADMIN,wxyhgl</value>			
+                <value>1600200,1600000,用户分组管理,/wxauth/group/wxGroup.*,1600200,ROLE_ADMIN,yhfzgl</value> 
+                <value>1600300,1600000,缓存管理,/wxauth/cache/cacheMgr.*,1600300,ROLE_ADMIN,hcgl</value> 
+                <value>1600400,1600000,群发管理,/wxauth/mass/massInfoPage.*,1600400,ROLE_ADMIN,qfgl</value> 
+                <value>1600500,1600000,素材管理,/wxauth/materialmgr/materialmgrView.*,1600500,ROLE_ADMIN,scgl</value> 
+                <value>1600600,1600000,菜单管理,/wxauth/menu/menuPage.*,1600600,ROLE_ADMIN,cdgl</value>  -->
+                
+				<value>1200000,,收费标准管理,/sysmanager2,1200000,ROLE_ADMIN,sfbzgl</value>
+				<value>1200100,1200000,收费标准信息,/bzxx/YsfBzxx/BzxxPage.*,1200100,ROLE_ADMIN,sfbzxx</value>
+				<value>1200200,1200000,收费标准信息查询,/sfgl/sfglcx/openpage.*,1200200,ROLE_ADMIN,sfbzxxcx</value>
+				
+				<value>1300000,,投诉信息,/sysmanager3,1300000,ROLE_ADMIN,tsxx</value>
+				<value>1300100,1300000,投诉信息,/tsxx/YtsXx/TsxxPage.*,1300100,ROLE_ADMIN,tsxx</value>
+				
+				<value>1400000,,客户管理,/sysmanager4,1400000,ROLE_ADMIN,khgl</value>
+				<value>1400100,1400000,客户分类,/khgl/YKhHyxx/HyxxPage.*,1400100,ROLE_ADMIN,hyxx</value>
+				<value>1400300,1400000,客户档案,/khgl/YKhKhxx/KhxxPage.*,1400300,ROLE_ADMIN,khxx</value>
+				<value>1400400,1400000,客户档案查询,/khgl/khxxcx/openPage.*,1400400,ROLE_ADMIN,khxx</value>
+				<value>1400200,1400000,客户回访记录,/khgl/YKhHfxx/HfxxPage.*,1400200,ROLE_ADMIN,khxx</value>
+				
+				<value>1500000,,检验标准管理,/sysmanager5,1500000,ROLE_ADMIN,jybzxx</value>
+ 				<value>1500100,1500000,检验标准信息,/jybzgl/jybzglPage.*,1500100,ROLE_ADMIN,jybzxx</value> 
+
+				<value>1700000,,设备管理,/sysmanager6,1700000,ROLE_ADMIN,sbxx</value>
+				<value>1700500,1700000,设备查询,/tjgl/sbcx/openPage.*,1700500,ROLE_ADMIN,bgcx</value>
+				<value>1700100,1700000,设备信息,/sbgl/YSbXx/SbxxPage.*,1700100,ROLE_ADMIN,sbxx</value>
+<!--  				<value>1700200,1700000,设备申购,/sbgl/YSbSg/SbsgPage.*,1700200,ROLE_ADMIN,sbsg</value> -->
+ 				<value>1700300,1700000,设备使用记录,/sbgl/YsbSyjl/SbsyjlPage.*,1700300,ROLE_ADMIN,sbsyjl</value>
+ 				<value>1700400,1700000,设备检定记录,/sbgl/YsbJdjl/SbjdjlPage.*,1700400,ROLE_ADMIN,sbjdjl</value>
+ 				<value>1700800,1700000,设备维修记录,/sbgl/YsbBxjl/SbbxjlPage.*,1700800,ROLE_ADMIN,sbwxjl</value>
+
+				<!-- <value>1800000,,样品管理,/sysmanager7,1800000,ROLE_ADMIN,system</value>
+		 		<value>1800100,1800000,样品信息,/ypgl/YYpYpxx/YpxxPage.*,1800100,ROLE_ADMIN,wshzy</value>
+				<value>1800200,1800000,样品领用,/ypgl/YYpLy/yplyPage.*,1800200,ROLE_ADMIN,wshzy</value>
+				<value>1800300,1800000,样品归还,/ypgl/YYpGh/ypghPage.*,1800300,ROLE_ADMIN,wshzy</value>
+				<value>1800400,1800000,样品退样,/ypgl/YYpTy/yptyPage.*,1800400,ROLE_ADMIN,wshzy</value>
+				<value>1800500,1800000,预检方案,/ypgl/YYpJyfa/YjfaPage.*,1800500,ROLE_ADMIN,wshzy</value> -->
+				
+				
+				<value>1900000,,认证产品管理,/sysmanager8,1900000,ROLE_ADMIN,rzcpgl</value>
+				<value>1900100,1900000,认证产品信息,/rzcpgl/YRzCpxx/CpxxPage.*,1900100,ROLE_ADMIN,rztbgl</value>
+				
+				<value>2000000,,技术服务管理,/sysmanager9,2000000,ROLE_ADMIN,jsfwgl</value>
+				<value>2000100,2000000,技术服务管理,/jsfwgl/YjsfwXyxx/JsfwXyxxPage.*,2000100,ROLE_ADMIN,jsfwgl</value>
+				<value>2000200,2000000,技术服务查询,/jsfwgl/jsfwcx/openPage.*,2000200,ROLE_ADMIN,jsfwgl</value>
+				
+				<value>2100000,,消息管理,/sysmanager10,2100000,ROLE_ADMIN,xxgl</value>
+				<value>2100100,2100000,消息管理,/yxxgl/xxmbPage.*,2100100,ROLE_ADMIN,xxgl</value>
+				
+				 <value>2200000,,检验管理,/sysmanager11,2200000,ROLE_ADMIN,jygl</value>
+ 				<value>2200100,2200000,检验信息,/jygl/YjyJyxx/JyxxPage.*,2200100,ROLE_ADMIN,jyxx</value>
+				<value>2200200,2200000,检验设备信息,/jygl/YjySbxx/SbxxPage.*,2200200,ROLE_ADMIN,jysbxx</value>
+				<value>2200300,2200000,检验项目目录,/jygl/YjyXmml/XmmlPage.*,2200300,ROLE_ADMIN,jyxmml</value>
+				<value>2200500,2200000,检验报告模版,/jygl/YjyBgmb/BgmbPage.*,2200500,ROLE_ADMIN,jybgmb</value>
+				<value>2200600,2200000,认证图标管理,/jygl/YjyRztb/rztbView.*,2200600,ROLE_ADMIN,rztbgl</value>
+				<value>2200700,2200000,院内委托管理,/jygl/YjyNwgl/nwglPage.*,2200700,ROLE_ADMIN,rztbgl</value>
+				<value>2200800,2200000,常用检验结论用语,/jygl/YjyClyy/ClyyPage.*,2200800,ROLE_ADMIN,rztbgl</value>
+
+				<value>2400000,,档案管理,/sysmanager13,2400000,ROLE_ADMIN,dagl</value>
+				<value>2400100,2400000,档案信息管理,/dagl/YdaXx/DaXxPage.*,2400100,ROLE_ADMIN,daxxgl</value>
+				<value>2400200,2400000,档案类目管理,/dagl/YdaLmgl/DaLmglPage.*,2400200,ROLE_ADMIN,dalmgl</value>
+				<value>2400300,2400000,保管期限管理,/dagl/YdaBgqx/DaBgqxPage.*,2400300,ROLE_ADMIN,bgqxgl</value>
+				
+				<value>2500000,,科研管理,/sysmanager14,2500000,ROLE_ADMIN,kygl</value>
+				<value>2500100,2500000,信息管理,/kygl/YkyXxgl/KyXxglPage.*,2500100,ROLE_ADMIN,xxgl</value>
+				<value>2500200,2500000,经费管理,/kygl/YkyJfgl/KyJfglPage.*,2500200,ROLE_ADMIN,jfgl</value>
+				<value>2500300,2500000,成果管理,/kygl/YkyCggl/KyCgglPage.*,2500300,ROLE_ADMIN,cggl</value>
+				
+				<value>2600000,,督办管理,/sysmanager15,2500000,ROLE_ADMIN,dbgl</value>
+				<value>2600100,2600000,我的督办,/dbgl/YdbWddb/WddbPage.*,2600100,ROLE_ADMIN,dbgl</value>
+				<value>2600200,2600000,反馈列表,/dbgl/YdbFklb/FklbPage.*,2600200,ROLE_ADMIN,fklb</value>
+				<!-- <value>2600300,2600000,业务督办,/dbgl/YdbYwdb/YwdbPage.*,2600300,ROLE_ADMIN,wjdc</value> -->
+				<!-- <value>2600400,2600000,督办列表,/dbgl/YdbDblb/DblbPage.*,2600400,ROLE_ADMIN,wjdc</value> -->
+				
+				
+				<value>2700000,,财务管理,/sysmanager16,2700000,ROLE_ADMIN,cwgl</value>
+				<value>2700100,2700000,成本管理,,2700100,ROLE_ADMIN,cwgl</value>
+				  <value>2700110,2700100,成本信息,/cbgl/YCwCbxx/CbxxPage.*,2700110,ROLE_ADMIN,cbgl</value>
+                  <value>2700120,2700100,成本信息统计,/sjbb/Cbtj/CbtjPage.*,2700120,ROLE_ADMIN,srtj</value>
+                  <value>2700130,2700100,工资薪金信息,/cwgl/YCwYgfl/YgflPage.*,2700130,ROLE_ADMIN,ygfl</value>
+				  <value>2700140,2700100,工资薪金统计,/sjbb/Ygfltj/FltjhzPage.*,2700140,ROLE_ADMIN,srtj</value>
+				<value>2700200,2700000,收入管理,,2700200,ROLE_ADMIN,cwgl</value>
+	              <value>2700210,2700200,报告收费,,2700210,ROLE_ADMIN,bgsf</value>
+	                  <value>2700211,2700210,待收费,/cwgl/YcwBgsf/BgsfPage.*,2700210,ROLE_ADMIN,bgsf</value>
+	                  <value>2700212,2700210,已收费,/cwgl/YcwBgsf/BgysfPage.*,2700210,ROLE_ADMIN,bgsf</value>
+	              <value>2700220,2700200,技术协议收费,,2700220,ROLE_ADMIN,bgsf</value>
+	                  <value>2700221,2700220,待收费,/cwgl/YcwJsfwxysf/XysfPage.*,2700221,ROLE_ADMIN,bgsf</value>
+	                  <value>2700222,2700220,已收费,/cwgl/YcwJsfwxysf/XyysfPage.*,2700222,ROLE_ADMIN,bgsf</value>
+	              <value>2700230,2700200,管理部门收费,/cwgl/YcwGlbmsf/GlbmsfPage.*,2700230,ROLE_ADMIN,bgsf</value>
+	              <value>2700240,2700200,科室收入统计,/sjbb/Ygfltj/KssrtjPage.*,2700240,ROLE_ADMIN,srtj</value>
+			      <value>2700250,2700200,收费记录查询,/sjbb/Ygfltj/SfjlhzPage.*,2700250,ROLE_ADMIN,srtj</value>
+                
+                <value>2800000,,人事管理,/sysmanager17,2800000,ROLE_ADMIN,rsgl</value>
+				<value>2800100,2800000,人员档案信息,/rsgl/YRsRydaxx/RydaxxPage.*,2800100,ROLE_ADMIN,rydaxx</value>
+				<value>2800200,2800000,奖惩管理,/rsgl/YRsJcInfo/JcInfoPage.*,2800200,ROLE_ADMIN,jcgl</value>
+				<value>2800300,2800000,薪资管理,/rsgl/YRsXzInfo/XzInfoPage.*,2800300,ROLE_ADMIN,xzgl</value>
+				<value>2800500,2800000,培训记录,/rsgl/YRsPxjlInfo/PxjlInfoPage.*,2800500,ROLE_ADMIN,pxjl</value>
+                
+                <value>2900000,,上岗证管理,/sysmanager18,2900000,ROLE_ADMIN,sgzgl</value>
+				<value>2900100,2900000,上岗证信息,/sgzgl/YsgzXx/SgzxxPage.*,2900100,ROLE_ADMIN,sgzxx</value>
+				
+                
+                <value>3000000,,收发文管理,/sysmanager19,3000000,ROLE_ADMIN,sfwgl</value>
+				<value>3000100,3000000,我的发文,/sfwgl/YsfwFwxx/FwxxPage.*,3000100,ROLE_ADMIN,wdsfw</value>
+				<value>3000200,3000000,回复信息,/sfwgl/YsfwHfb/HfbPage.*,3000200,ROLE_ADMIN,hfxx</value>
+				
+				<value>3100000,,报告及时率考核管理,/sysmanager20,3100000,ROLE_ADMIN,bgcx</value>
+				<value>3100100,3100000,考核参数设置,/bgjsl/ListPage.*,3100100,ROLE_ADMIN,wdsfw</value>
+				<value>3100200,3100000,报告及时率考核统计,/bgjsl/JslListPage.*,3100200,ROLE_ADMIN,wdsfw</value>
+				
+				<value>3500000,,检验咨询信息,/sysmanager21,3500000,ROLE_ADMIN,bgcx</value>
+				<value>3500100,3500000,检验咨询信息,/jyzxxx/YJyZxxx/ZxxxPage.*,3500100,ROLE_ADMIN,wdsfw</value>
+				<value>3500200,3500000,咨询信息查询,/jyzxxx/YJyXxcx/XxcxPage.*,3500200,ROLE_ADMIN,wdsfw</value>
+				
+<!-- 				<value>3300000,,数据报表,/sysmanager22,3300000,ROLE_ADMIN,sjbb</value> -->
+<!-- 				<value>3300100,3300000,总体费用统计,/sjbb/ZyZjxgxx/zhuye.*,3300100,ROLE_ADMIN,sjbb</value> -->
+<!-- 				<value>3300200,3300000,报告收费统计,/sjbb/WfwXgxx/wfwZy.*,3300200,ROLE_ADMIN,sjbb</value> -->
+<!-- 				<value>3300300,3300000,收入统计,/sjbb/WglXgxx/wglZy.*,3300300,ROLE_ADMIN,sjbb</value> -->
+<!-- 				<value>3300400,3300000,成本统计,/sjbb/Cbtj/CbtjPage.*,3300400,ROLE_ADMIN,srtj</value> -->
+<!-- 				<value>3300500,3300000,员工福利查询,/sjbb/Ygfltj/FltjPage.*,3300500,ROLE_ADMIN,srtj</value> -->
+<!-- 				<value>3300500,3300000,员工福利汇总,/sjbb/Ygfltj/FltjhzPage.*,3300500,ROLE_ADMIN,srtj</value> -->
+				
+<!-- 				<value>3100000,,微信平台,/sysmanager20,3100000,ROLE_ADMIN,wxpt</value>
+				<value>3100100,3100000,微主页,/wxpt/ZyZjxgxx/zhuye.*,3100100,ROLE_ADMIN,wzy</value>
+				<value>3100200,3100000,微服务,/wxpt/WfwXgxx/wfwZy.*,3100200,ROLE_ADMIN,wfw</value>
+				<value>3100300,3100000,微管理,/wxpt/WglXgxx/wglZy.*,3100300,ROLE_ADMIN,wgl</value>
+				
+				<value>1600000,,微信管理,/sysmanager1,1600000,ROLE_ADMIN,wxgl</value>
+				<value>1600100,1600000,微信用户管理,/wxauth/user/wxUser.*,1600100,ROLE_ADMIN,wxyhgl</value>			
+                <value>1600200,1600000,用户分组管理,/wxauth/group/wxGroup.*,1600200,ROLE_ADMIN,yhfzgl</value> 
+                <value>1600300,1600000,缓存管理,/wxauth/cache/cacheMgr.*,1600300,ROLE_ADMIN,hcgl</value> 
+                <value>1600400,1600000,群发管理,/wxauth/mass/massInfoPage.*,1600400,ROLE_ADMIN,qfgl</value> -->
+  <!--               <value>1600500,1600000,素材管理,/wxauth/materialmgr/materialmgrView.*,1600500,ROLE_ADMIN,scgl</value> -->
+  <!--              <value>1600600,1600000,菜单管理,/wxauth/menu/menuPage.*,1600600,ROLE_ADMIN,cdgl</value>-->
+                
+               
+				
+                
+<!--                 <value>3400000,,统计查询,/sysmanager21,3400000,ROLE_ADMIN,tjgl</value> -->
+<!-- 				<value>3400100,3400000,样品查询,/tjgl/ypcx/openPage.*,3400100,ROLE_ADMIN,ypcx</value> -->
+<!-- 				<value>3400200,3400000,报告查询,/tjgl/bgcx/openPage.*,3400200,ROLE_ADMIN,bgcx</value> -->
+<!-- 				<value>3400300,3400000,设备查询,/tjgl/sbcx/openPage.*,3400300,ROLE_ADMIN,wzy</value> -->
+                
+		</util:list>
+</beans>

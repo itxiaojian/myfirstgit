@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+			 xmlns:beans="http://www.springframework.org/schema/beans"
+			 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+           http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.0.xsd">
+	<http use-expressions="true" auto-config="false">
+		<intercept-url pattern="/jsp/**" filters="none"/>
+		<intercept-url pattern="/libs/**" filters="none"/>
+<!-- 		<intercept-url pattern="/resources/**" filters="none"/> -->
+		<intercept-url pattern="/resources/src/Plugins/**" filters="none"/>
+		<intercept-url pattern="/resources/src/**" filters="none"/>
+		<intercept-url pattern="/system/layout/skin/**" filters="none"/>
+		<intercept-url pattern="/system/login/**" filters="none"/>
+		<intercept-url pattern="/demo/Word/wordUpload/**" filters="none"/>
+		<intercept-url pattern="/demo/Knowledge/knowledgeUpload/**" filters="none"/>
+		<intercept-url pattern="/sys/SysWxyh/save" filters="none" />
+		<intercept-url pattern="/wzy/ZyXyxw/zhuye" filters="none" />  <!-- 微主页 -->
+
+<!-- 微主页 -->		<intercept-url pattern="/wxpt/ZyZjxgxx/zhuye/**" filters="none"/>
+<!-- 微服务 -->		<intercept-url pattern="/wxpt/WfwXgxx/wfwZy/**" filters="none"/>
+<!-- 微管理 -->		<intercept-url pattern="/wxpt/WglXgxx/wglZy/**" filters="none"/>
+<!-- 微主页-简介 -->    <intercept-url pattern="/wxpt/ZyZjxgxx/zyZjjj" filters="none" />   
+<!-- 微主页-组织架构 -->    <intercept-url pattern="/wxpt/ZyZjxgxx/zyZzjg" filters="none" /> 
+<!-- 微主页-发展历程 -->    <intercept-url pattern="/wxpt/ZyZjxgxx/zyfzlc" filters="none" />     
+<!-- 微主页-质检新闻 -->    <intercept-url pattern="/wxpt/ZyZjxgxx/zyZjxwlb" filters="none" /> 
+
+<!-- 微主页-质检新闻 1-->   <intercept-url pattern="/wxpt/ZyZjxgxx/zyNews1" filters="none" /> 
+<!-- 微主页-质检新闻 2-->   <intercept-url pattern="/wxpt/ZyZjxgxx/zyNews2" filters="none" /> 
+<!-- 微主页-质检新闻 3-->   <intercept-url pattern="/wxpt/ZyZjxgxx/zyNews3" filters="none" /> 
+<!-- 微主页-质检新闻 4-->   <intercept-url pattern="/wxpt/ZyZjxgxx/zyNews4" filters="none" /> 
+<!-- 微主页-质检新闻 5-->   <intercept-url pattern="/wxpt/ZyZjxgxx/zyNews5" filters="none" /> 
+<!-- 微主页-质检新闻 6-->   <intercept-url pattern="/wxpt/ZyZjxgxx/zyNews6" filters="none" /> 
+<!-- 微主页-质检新闻 7-->   <intercept-url pattern="/wxpt/ZyZjxgxx/zyNews7" filters="none" /> 
+<!-- 微主页-质检新闻8-->   <intercept-url pattern="/wxpt/ZyZjxgxx/zyNews8" filters="none" /> 
+<!-- 微主页-质检新闻9-->   <intercept-url pattern="/wxpt/ZyZjxgxx/zyNews9" filters="none" /> 
+
+<!-- 微主页-检验标准-->   <intercept-url pattern="/wxpt/ZyZjxgxx/zyZjJybzXq/**" filters="none" /> 
+
+<!-- 微主页-办事流程 -->    <intercept-url pattern="/wxpt/ZyZjxgxx/zyBslc" filters="none" /> 
+<!-- 微主页-检验标准 -->    <intercept-url pattern="/wxpt/ZyZjxgxx/zyJybz" filters="none" /> 
+<!-- 微主页-质量馆 -->    <intercept-url pattern="/wxpt/ZyZjxgxx/zyzlg" filters="none" /> 
+<!-- 微主页-品牌馆 -->    <intercept-url pattern="/wxpt/ZyZjxgxx/zyppg" filters="none" /> 
+<!-- 微主页-联系我们 -->    <intercept-url pattern="/wxpt/ZyZjxgxx/zylxwm" filters="none" /> 
+
+<!-- 微服务-扫一扫 -->    <intercept-url pattern="/wxpt/WfwXgxx/building" filters="none" /> 
+<!-- 微服务-样品信息 -->    <intercept-url pattern="/wxpt/WfwXgxx/wfwYpxx" filters="none" /> 
+<!-- 微服务-设备信息 -->    <intercept-url pattern="/wxpt/WfwXgxx/wfwSbxx" filters="none" /> 
+<!-- 微服务-报告信息 -->    <intercept-url pattern="/wxpt/WfwXgxx/wfwBgxx" filters="none" /> 
+<!-- 微服务-数据统计 -->    <intercept-url pattern="/wxpt/WfwXgxx/sjtjBuilding" filters="none" />
+<!-- 微服务-样品信息-详情 -->    <intercept-url pattern="/wxpt/WfwXgxx/wfwYpxxXq" filters="none" /> 
+<!-- 微服务-设备信息-详情 -->    <intercept-url pattern="/wxpt/ZyZjxgxx/zyZjSbxxXq" filters="none" /> 
+<!-- 微服务-报告信息-详情-->    <intercept-url pattern="/wxpt/WfwXgxx/wfwBgxxXq" filters="none" />  
+<!-- 微服务-设备信息-查询-->    <intercept-url pattern="/wxpt/WfwXgxx/wxptSbxx" filters="none" />  
+<!-- 微服务-样品信息-查询-->    <intercept-url pattern="/wxpt/WfwXgxx/wxptYpxx" filters="none" />  
+
+<!-- 微管理-我的任务 -->    <intercept-url pattern="/wxpt/WglXgxx/wglWdrw" filters="none" /> 
+<!-- 微管理-我的申请 -->    <intercept-url pattern="/wxpt/WglXgxx/wglWdsq" filters="none" /> 
+<!-- 微管理-工作汇报 -->    <intercept-url pattern="/wxpt/WglXgxx/wglGzhb" filters="none" />
+<!-- 微管理-我的任务-我的任务详情 -->    <intercept-url pattern="/wxpt/WglXgxx/wglWdrwXq" filters="none" />
+<!-- 微管理-我的申请-申请 -->    <intercept-url pattern="/wxpt/WglXgxx/wglSqsx" filters="none" />
+<!-- 微管理-我的申请-请假 -->    <intercept-url pattern="/wxpt/WglXgxx/sqxx" filters="none" />
+<!-- 微管理-我的申请-我的申请 -->   <intercept-url pattern="/wxpt/WglXgxx/wglWdsqList" filters="none" />  
+<!-- 微管理-我的申请-审批申请 -->   <intercept-url pattern="/wxpt/WglXgxx/wglWdsqList1" filters="none" /> 
+<!-- 微管理-我的申请-抄送申请 -->   <intercept-url pattern="/wxpt/WglXgxx/wglWdsqList2" filters="none" /> 
+<!-- 微管理-我的申请-我的申请详情 -->   <intercept-url pattern="/wxpt/WglXgxx/wglWdsqXq" filters="none" /> 
+<!-- 微管理-我的申请-审批申请详情 -->   <intercept-url pattern="/wxpt/WglXgxx/wglWdsqXq1" filters="none" /> 
+<!-- 微管理-我的申请-审批申请详情 -->   <intercept-url pattern="/wxpt/WglXgxx/wglWdsqXq2" filters="none" /> 
+<!-- 微管理-工作汇报-发送汇报 -->    <intercept-url pattern="/wxpt/WglXgxx/wglGzhbList" filters="none" /> 
+<!-- 微管理-工作汇报-查看汇报 -->    <intercept-url pattern="/wxpt/WglXgxx/wglGzhbList1" filters="none" /> 
+<!-- 微管理-工作汇报-发送汇报详情 -->    <intercept-url pattern="/wxpt/WglXgxx/wglGzhbXq" filters="none" /> 
+<!-- 微管理-工作汇报-查看汇报详情 -->    <intercept-url pattern="/wxpt/WglXgxx/wglGzhbXq1" filters="none" /> 
+<!-- 微管理-工作汇报-我的申请的保存 -->    <intercept-url pattern="/wxpt/WglXgxx/saveWdsq" filters="none" />
+<!-- 微管理-我的申请-审核通过 -->    <intercept-url pattern="/wxpt/WglXgxx/shtg" filters="none" />
+<!-- 微管理-我的申请-驳回 -->    <intercept-url pattern="/wxpt/WglXgxx/bh" filters="none" />
+<!-- 微管理-工作汇报-汇报信息-->    <intercept-url pattern="/wxpt/WglXgxx/hbxx" filters="none" />
+<!-- 微管理-工作汇报-汇报信息-->    <intercept-url pattern="/wxpt/WglXgxx/wglHbsx" filters="none" />
+<!-- 微管理-我的任务-搜索-->    <intercept-url pattern="/wxpt/WglXgxx/wxptWdrw" filters="none" />
+<!-- 微管理-工作汇报-汇报保存-->    <intercept-url pattern="/wxpt/WglXgxx/saveGzhb" filters="none" />
+
+<!-- 样品流转单打印页面 -->    <intercept-url pattern="/ypgl/YYpYpxx/YpLzdPage" filters="none" /> 
+<!-- 样品委托协议打印页面 -->    <intercept-url pattern="/ypgl/YYpYpxx/YpJyxysPage" filters="none" />
+<!-- 样品查看二维码页面 -->    <intercept-url pattern="/ypgl/YYpYpxx/ypewmPage" filters="none" />
+<!-- 样品抽样单打印页面 -->    <intercept-url pattern="/ypgl/YYpYpxx/YpCydPage" filters="none" /> 
+<!-- 扫描二维码查看样品信息页面 -->    <intercept-url pattern="/ypgl/YYpYpxx/toSbDetail" filters="none" /> 
+<!-- 扫描二维码查看样品信息页面 -->    <intercept-url pattern="/ypgl/YYpYj/toSbDetail" filters="none" />
+<!-- 扫描二维码查看设备信息页面 -->    <intercept-url pattern="/sbgl/YSbXx/toSbDetail" filters="none" />
+<!-- 扫描二维码点击移交页面 -->    <intercept-url pattern="/ypgl/YYpYj/ypxxYjiaoView" filters="none" />
+<!-- 移交完成后跳转移交记录页面 -->    <intercept-url pattern="/ypgl/YYpYj/yjjlPage" filters="none" /> 
+<!-- 移交完成后跳转移交记录页面 -->    <intercept-url pattern="/ypgl/YYpYj/getYjList" filters="none" /> 
+<!-- 移交完成后跳转移交记录页面 -->    <intercept-url pattern="/ypgl/YYpYj//Yjiao" filters="none" /> 
+
+ <!-- 公司微信平台 --><intercept-url pattern="/com/company/**" filters="none"/>
+
+		<intercept-url pattern="/**" access="isAuthenticated()"/>
+		<intercept-url pattern="/system/layout/**" access="isAuthenticated()"/>
+		<form-login login-page="/system/login/login.jsp" default-target-url='/system/layout/main.jsp'/>
+		<http-basic/>
+		<remember-me/>
+		<custom-filter before="FORM_LOGIN_FILTER " ref="myUsernamePasswordAuthenticationFilter"/>
+		<custom-filter before="FILTER_SECURITY_INTERCEPTOR" ref="defaultFilter"/>
+		<custom-filter position="LOGOUT_FILTER" ref="logoutFilter"/>
+		<!--<custom-filter ref="concurrencyFilter" position="CONCURRENT_SESSION_FILTER"/> 
+		<session-management invalid-session-url="/jsp/expired.jsp" session-authentication-strategy-ref="concurrentSessionControlStrategy"/>-->
+	</http>
+
+	<beans:bean id="defaultFilter" class="com.zssi.framework.app.sys.security.DefaultFilterSecurityInterceptor">
+		<beans:property name="authenticationManager" ref="authenticationManager"/>
+		<beans:property name="accessDecisionManager" ref="accessDecisionManager"/>
+		<beans:property name="securityMetadataSource" ref="defaultSecurityMetadataSource"/>
+	</beans:bean>
+
+	<beans:bean id="logoutFilter" class="org.springframework.security.web.authentication.logout.LogoutFilter">
+		<beans:constructor-arg index="0" value="/system/login/login.jsp"/>
+		<beans:constructor-arg index="1">
+			<beans:list>
+				<beans:bean id="myLogoutHandler" class="com.zssi.framework.app.sys.security.MyLogoutHandler"/>
+				<beans:bean id="securityContextLogoutHandler" class="org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler"/>
+			</beans:list>
+		</beans:constructor-arg>
+	</beans:bean>
+
+	<beans:bean id="myUsernamePasswordAuthenticationFilter" class="com.zssi.framework.app.sys.security.MyUsernamePasswordAuthenticationFilter">
+		<beans:property name="validateCode" value="false"/>
+		<beans:property name="authenticationManager" ref="authenticationManager"/>
+		<beans:property name="sessionAuthenticationStrategy" ref="concurrentSessionControlStrategy"/>
+		<beans:property name="authenticationSuccessHandler" ref="myAuthenticationSuccessHandler"/>
+		<beans:property name="authenticationFailureHandler" ref="simpleUrlAuthenticationFailureHandler"/>
+	</beans:bean>
+
+	<beans:bean id="accessDecisionManager" class="com.zssi.framework.app.sys.security.MyAccessDecisionManager"/>
+
+	<beans:bean id="simpleUrlAuthenticationFailureHandler" class="org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler">
+		<beans:property name="defaultFailureUrl" value="/system/login/login.jsp"></beans:property>
+	</beans:bean>
+
+	<beans:bean id="myAuthenticationSuccessHandler" class="com.zssi.framework.app.sys.security.MyAuthenticationSuccessHandler">
+		<beans:property name="alwaysUseDefaultTargetUrl" value="true"/>
+		<beans:property name="targetUrlMap">
+			<beans:map>
+				<beans:entry key="USER_LOGIN" value="/site/user/index"/>
+			</beans:map>
+		</beans:property>
+		<beans:property name="defaultTargetUrl" value="/system/layout/main.jsp"/>
+	</beans:bean>
+
+	<!-- 认证管理器，实现用户认证的入口，主要实现UserDetailsService接口即可 -->
+	<authentication-manager alias="authenticationManager">
+		<authentication-provider user-service-ref="userDetailService">
+			<!-- 如果用户的密码采用加密的话，可以加点“盐” -->
+			<password-encoder hash="md5">
+				<!-- 盐，根据用户name作为盐 -->
+				<salt-source user-property="username"/>
+			</password-encoder>
+		</authentication-provider>
+	</authentication-manager>
+
+
+	<beans:bean id="userDetailService" class="com.zssi.framework.app.sys.security.UserDetailServiceImpl"/>
+
+	<!-- 资源源数据定义，即定义某一资源可以被哪些角色访问 -->
+	<beans:bean id="defaultSecurityMetadataSource" class="com.zssi.framework.app.sys.security.DefaultInvocationSecurityMetadataSource" lazy-init="false"/>
+	
+	<!-- ConcurrentSessionFilter过滤器配置(主要设置账户session过期路径) 
+	User类必须重写equals和hashCode方法
+	-->  
+	<beans:bean id="concurrencyFilter" class="org.springframework.security.web.session.ConcurrentSessionFilter">  
+	    <beans:property name="expiredUrl" value="/jsp/loginlimit.jsp"></beans:property>  
+	    <beans:property name="sessionRegistry" ref="sessionRegistry"></beans:property>  
+	</beans:bean> 
+	
+	<beans:bean id="concurrentSessionControlStrategy" class="org.springframework.security.web.authentication.session.ConcurrentSessionControlStrategy">
+		<beans:constructor-arg name="sessionRegistry" ref="sessionRegistry" />
+		<beans:property name="maximumSessions" value="1" />
+		<!-- 
+		1、设置exceptionIfMaximumExceeded=true，会报异常：SessionAuthenticationException("Maximum sessions of {0} for this principal exceeded");
+  		2、设置exceptionIfMaximumExceeded=false，那么B用户会把A用户挤掉，A用户再点击页面，则会跳转到
+		ConcurrentSessionFilter的expiredUrl路径。 -->
+		<beans:property name="exceptionIfMaximumExceeded" value="false" />
+	</beans:bean>
+	<beans:bean name="sessionRegistry" class="org.springframework.security.core.session.SessionRegistryImpl"/>
+</beans:beans>
